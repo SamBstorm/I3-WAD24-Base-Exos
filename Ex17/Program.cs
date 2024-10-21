@@ -11,7 +11,7 @@
 			//int index = 0;
 			tab[0] = true;
 
-			string userChoice;
+			ConsoleKey userChoice;
 
 			
 			do
@@ -32,23 +32,25 @@
 				Console.WriteLine();
 
 				//Menu de choix
-				Console.WriteLine("(G)auche | (D)roite | (Q)uitter");
-				userChoice = Console.ReadLine().ToUpper();
+				//Console.WriteLine("(G)auche | (D)roite | (Q)uitter");
+				Console.WriteLine("(←) | (→) | (Escape)");
+
+				userChoice = Console.ReadKey().Key;
 				int index = Array.IndexOf(tab, true);
 
 				//Déplacement
 				tab[index] = false;
-				if (userChoice == "G" && index > 0)
+				if (userChoice == ConsoleKey.LeftArrow && index > 0)
 				{
 					index--;
 				}
-				else if (userChoice == "D" && index < tab.Length - 1)
+				else if (userChoice == ConsoleKey.RightArrow && index < tab.Length - 1)
 				{
 					index++;
 				}
 				tab[index] = true;
 
-			} while (userChoice != "Q");
+			} while (userChoice != ConsoleKey.Escape);
 		}
 	}
 }
